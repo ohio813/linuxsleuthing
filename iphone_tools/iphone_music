@@ -7,6 +7,8 @@
 #: Options	: None
 
 #: 05/03/2011 : v1.0.0 Initial Release
+#: 01/19/2011 : V1.1.0 Speed enhancement to -a option
+#: 01/21/2012 : v1.1.1 Corrected help/error ouput (thanks to Leasim Leija)
 
 ## Variables
 progname="${0##*/}"
@@ -18,7 +20,7 @@ verbose=0
 
 usage()
 {
-	echo "USAGE: $progname [-hiv] [path]"
+	echo "USAGE: $progname [-ahv] [path]"
 	echo "       where 'path' is the path to be searched"
 	cat << EOF
 	
@@ -93,7 +95,7 @@ shift "$(( $OPTIND -1 ))"
 
 ## Check for conflicting arguments
 if [ $(( $verbose + $itunes )) -gt 1 ]; then
-	echo "Error: arguments -i and -v may not be used together" >&2
+	echo "Error: arguments -a and -v may not be used together" >&2
 	exit 1
 fi
 
